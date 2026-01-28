@@ -2,7 +2,7 @@
 
 import { HiCheckCircle, HiQuestionMarkCircle, HiLightningBolt, HiClock, HiBookOpen, HiArrowRight, HiStar, HiArrowLeft } from "react-icons/hi"
 import Link from "next/link"
-import type { Quiz } from "@/lib/quiz-data"
+import type { Quiz } from "@/data/quiz"
 import type { QuizProgress } from "@/lib/quiz-storage"
 
 interface QuizInfoProps {

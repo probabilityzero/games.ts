@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { getAllCategories, quizzes } from "@/lib/quiz-data"
+import { getAllCategories, quizzes } from "@/data/quiz"
 import { useEffect, useState } from "react"
 import { getAllProgress } from "@/lib/quiz-storage"
 import { getUserProfile } from "@/lib/profile-storage"
@@ -61,7 +61,7 @@ export default function Home() {
 
           <div className="max-w-3xl mx-auto text-center space-y-4 md:space-y-6">
             <p className="text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed px-4">
-              Participate every Tuesday to win exciting prizes! Test your knowledge across various topics and challenge yourself with our weekly quizzes.
+              Participate every quizday and win prizes! Test your knowledge across topics and challenge yourself with the weekly quizzes.
             </p>
 
             {profile && (
@@ -124,103 +124,109 @@ export default function Home() {
                       : 0
 
                     return (
-                      <Link key={quiz.id} href={`/quiz/${quiz.slug}`}>
+                      <Link key={quiz.id} href={`/${quiz.slug}`}>
                         <div className="group h-full bg-card border border-border rounded-lg md:rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300 cursor-pointer flex flex-col active:scale-[0.98]">
                           <div className="relative">
                             <div
-                              className={`h-32 md:h-36 bg-linear-to-br ${quiz.accentColor} relative overflow-hidden flex items-center justify-center`}
+                              className={`w-full aspect-video bg-linear-to-br ${quiz.accentColor} relative overflow-hidden flex items-center justify-center`}
                             >
-                              <div className="text-5xl md:text-6xl opacity-20 absolute">
-                                {quiz.icon}
-                              </div>
-                              
+                              {quiz.bannerImage && (
+                                <img
+                                  src={quiz.bannerImage}
+                                  alt={quiz.title + " banner"}
+                                  className="absolute inset-0 w-full h-full object-cover"
+                                />
+                              )}
+
+                              <div className="absolute inset-0 bg-black/10" />
+
+                              <div className="absolute bottom-0 left-0 right-0 h-24 z-10 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none" />
+
                               {hasAttempts && (
                                 <div className="absolute top-2 md:top-3 right-2 md:right-3 bg-white/95 text-green-600 text-[10px] md:text-xs font-semibold px-2 md:px-2.5 py-1 md:py-1.5 rounded-full shadow-sm flex items-center gap-1">
                                   <HiCheckCircle className="w-3 h-3" />
                                   Completed
                                 </div>
                               )}
-
-                              {quiz.tags && quiz.tags.length > 0 && (
-                                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 via-black/30 to-transparent pt-6 md:pt-8 pb-2 md:pb-3 px-2 md:px-3">
-                                  <div className="flex flex-wrap gap-1 md:gap-1.5">
+                              <div className="absolute bottom-0 left-0 right-0 px-3 pb-2 flex flex-col grow z-20 border-b border-border">
+                                {quiz.tags && quiz.tags.length > 0 && (
+                                  <div className="flex flex-wrap gap-1 pb-1">
                                     {quiz.tags.slice(0, 3).map((tag) => (
                                       <span
                                         key={tag}
-                                        className="bg-white/90 backdrop-blur-sm text-gray-800 capitalize text-[10px] md:text-xs font-medium px-2 py-0.5 md:py-1 rounded"
+                                        className="bg-white/20 text-white backdrop-blur-sm border border-white/30 capitalize text-[10px] md:text-xs px-2 py-px md:py-0.5 rounded-2xl"
                                       >
                                         {tag}
                                       </span>
                                     ))}
                                   </div>
-                                </div>
-                              )}
+                                )}
+                                <h3 className="text-base md:text-lg font-semibold line-clamp-2 text-white">
+                                  {quiz.title}
+                                </h3>
+                                <p className="text-xs md:text-sm text-white/80 line-clamp-1">
+                                  {quiz.description}
+                                </p>
+                              </div>
                             </div>
                           </div>
 
-                          <div className="p-3 md:p-4 flex flex-col grow">
-                            <h3 className="text-base md:text-lg font-bold mb-1 line-clamp-2">
-                              {quiz.title}
-                            </h3>
-                            <p className="text-xs md:text-sm text-muted-foreground mb-3 line-clamp-2">
-                              {quiz.description}
-                            </p>
-
-                            <div className="grid grid-cols-2 gap-3 mb-3 pt-3 border-t border-border/50">
-                              <div className="flex items-start gap-1.5 md:gap-2">
-                                <HiQuestionMarkCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-muted-foreground mt-0.5 shrink-0" />
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-[10px] md:text-xs text-muted-foreground">Questions</div>
-                                  <div className="text-xs md:text-sm font-semibold">{quiz.questions.length}</div>
-                                </div>
+                        <div className="px-4 py-3 space-y-2 md:space-y-3">
+                          <div className="grid grid-cols-2 gap-3">
+                            <div className="flex items-start gap-1.5 md:gap-2">
+                              <HiQuestionMarkCircle className="w-3.5 h-3.5 md:w-4 md:h-4 text-muted-foreground mt-0.5 shrink-0" />
+                              <div className="flex-1 min-w-0">
+                                <div className="text-[10px] md:text-xs text-muted-foreground">Questions</div>
+                                <div className="text-xs md:text-sm font-semibold">{quiz.questions.length}</div>
                               </div>
-                              <div className="flex items-start gap-1.5 md:gap-2">
-                                <HiLightningBolt className="w-3.5 h-3.5 md:w-4 md:h-4 text-muted-foreground mt-0.5 shrink-0" />
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-[10px] md:text-xs text-muted-foreground">Difficulty</div>
-                                  <div className={`text-xs md:text-sm font-semibold capitalize ${
-                                    quiz.difficulty === 'easy' ? 'text-green-500' :
-                                    quiz.difficulty === 'medium' ? 'text-yellow-500' :
-                                    'text-red-500'
-                                  }`}>
-                                    {quiz.difficulty}
-                                  </div>
+                            </div>
+                            <div className="flex items-start gap-1.5 md:gap-2">
+                              <HiLightningBolt className="w-3.5 h-3.5 md:w-4 md:h-4 text-muted-foreground mt-0.5 shrink-0" />
+                              <div className="flex-1 min-w-0">
+                                <div className="text-[10px] md:text-xs text-muted-foreground">Difficulty</div>
+                                <div className={`text-xs md:text-sm font-semibold capitalize ${
+                                  quiz.difficulty === 'easy' ? 'text-green-500' :
+                                  quiz.difficulty === 'medium' ? 'text-yellow-500' :
+                                  'text-red-500'
+                                }`}>
+                                  {quiz.difficulty}
                                 </div>
                               </div>
                             </div>
+                          </div>
 
-                            {hasAttempts ? (
-                              <div className="space-y-1.5 md:space-y-2 bg-accent/10 rounded-lg p-2.5 md:p-3 mt-auto">
-                                <div className="flex items-center justify-between text-[10px] md:text-xs font-medium">
-                                  <span className="text-muted-foreground">Your Score</span>
-                                  <span className={`font-bold ${
-                                    percentage >= 80 ? 'text-green-500' :
-                                    percentage >= 60 ? 'text-yellow-500' :
-                                    'text-red-500'
-                                  }`}>
-                                    {percentage}%
-                                  </span>
-                                </div>
-                                <div className="w-full bg-muted/50 rounded-full h-1.5 md:h-2 overflow-hidden">
-                                  <div
-                                    className={`h-1.5 md:h-2 rounded-full transition-all duration-500 ${
-                                      percentage >= 80 ? 'bg-green-500' :
-                                      percentage >= 60 ? 'bg-yellow-500' :
-                                      'bg-red-500'
-                                    }`}
-                                    style={{ width: `${percentage}%` }}
-                                  />
-                                </div>
-                              </div>
-                            ) : (
-                              <button className="group/btn bg-primary hover:bg-primary/90 active:bg-primary/80 text-primary-foreground rounded-lg p-2.5 md:p-3 text-center mt-auto transition-all duration-200 hover:shadow-md active:scale-95">
-                                <span className="text-xs md:text-sm font-semibold inline-flex items-center gap-1.5 md:gap-2 group-hover/btn:gap-2.5 transition-all">
-                                  Start Quiz
-                                  <HiArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                          {hasAttempts ? (
+                            <div className="space-y-1.5 md:space-y-2 bg-accent/10 rounded-lg p-2.5 md:p-3 mt-auto">
+                              <div className="flex items-center justify-between text-[10px] md:text-xs font-medium">
+                                <span className="text-muted-foreground">Your Score</span>
+                                <span className={`font-bold ${
+                                  percentage >= 80 ? 'text-green-500' :
+                                  percentage >= 60 ? 'text-yellow-500' :
+                                  'text-red-500'
+                                }`}>
+                                  {percentage}%
                                 </span>
-                              </button>
-                            )}
-                          </div>
+                              </div>
+                              <div className="w-full bg-muted/50 rounded-full h-1.5 md:h-2 overflow-hidden">
+                                <div
+                                  className={`h-1.5 md:h-2 rounded-full transition-all duration-500 ${
+                                    percentage >= 80 ? 'bg-green-500' :
+                                    percentage >= 60 ? 'bg-yellow-500' :
+                                    'bg-red-500'
+                                  }`}
+                                  style={{ width: `${percentage}%` }}
+                                />
+                              </div>
+                            </div>
+                          ) : (
+                            <button className="group/btn w-full bg-primary hover:bg-primary/90 active:bg-primary/80 text-primary-foreground rounded-lg p-2.5 md:p-3 text-center mt-auto transition-all duration-200 hover:shadow-md active:scale-95">
+                              <span className="text-xs md:text-sm font-semibold inline-flex items-center gap-1.5 md:gap-2 group-hover/btn:gap-2.5 transition-all">
+                                Start Quiz
+                                <HiArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/btn:translate-x-0.5 transition-transform" />
+                              </span>
+                            </button>
+                          )} 
+                        </div>
                         </div>
                       </Link>
                     )

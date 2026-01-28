@@ -1,0 +1,103 @@
+import type { Quiz } from './types'
+
+const quiz: Quiz = {
+  id: "geo-001",
+  slug: "geography-advanced-world",
+  title: "Advanced World Geography",
+  description: "A balanced set of medium-difficulty geography questions covering physical features, capitals, and regional knowledge.",
+  category: "Geography",
+  difficulty: "medium",
+  estimatedTime: 15,
+  bannerImage: "/images/advanced-geography-world-map.jpg",
+  accentColor: "from-cyan-500 to-blue-700",
+  icon: "🗺️",
+  tags: ["geography", "world", "medium"],
+  questions: [
+    {
+      id: "q1",
+      text: "Which country has the longest coastline in the world?",
+      options: ["Canada", "Russia", "Indonesia", "Australia"],
+      correctAnswer: 0,
+      explanation: "Canada has the longest coastline in the world, largely because of its many islands and indented shorelines.",
+    },
+    {
+      id: "q2",
+      text: "Which African country has the largest population?",
+      options: ["Nigeria", "Ethiopia", "Egypt", "South Africa"],
+      correctAnswer: 0,
+      explanation: "Nigeria is the most populous African country, with a population exceeding 200 million.",
+    },
+    {
+      id: "q3",
+      text: "The Red Sea separates which two large landmasses?",
+      options: ["Africa and Asia", "Europe and Asia", "North America and Asia", "Africa and Europe"],
+      correctAnswer: 0,
+      explanation: "The Red Sea lies between northeast Africa and the Arabian Peninsula (Asia).",
+    },
+    {
+      id: "q4",
+      text: "What is the capital city of New Zealand?",
+      options: ["Auckland", "Wellington", "Christchurch", "Hamilton"],
+      correctAnswer: 1,
+      explanation: "Wellington is the political capital of New Zealand, while Auckland is the largest city.",
+    },
+    {
+      id: "q5",
+      text: "Into which body of water does the Danube River empty?",
+      options: ["Black Sea", "Mediterranean Sea", "North Sea", "Adriatic Sea"],
+      correctAnswer: 0,
+      explanation: "The Danube flows southeast across Europe and empties into the Black Sea via the Danube Delta.",
+    },
+    {
+      id: "q6",
+      text: "Which desert spans large parts of northern China and southern Mongolia?",
+      options: ["Gobi", "Taklamakan", "Karakum", "Thar"],
+      correctAnswer: 0,
+      explanation: "The Gobi Desert extends across parts of northern China and southern Mongolia.",
+    },
+    {
+      id: "q7",
+      text: "Which is the highest mountain in Africa?",
+      options: ["Mount Kilimanjaro", "Mount Kenya", "Ras Dashen", "Mount Meru"],
+      correctAnswer: 0,
+      explanation: "Mount Kilimanjaro, in Tanzania, is Africa's highest peak at about 5,895 meters.",
+    },
+    {
+      id: "q8",
+      text: "Which country contains the largest portion of the Amazon rainforest?",
+      options: ["Brazil", "Peru", "Colombia", "Bolivia"],
+      correctAnswer: 0,
+      explanation: "Brazil contains the majority of the Amazon rainforest by area.",
+    },
+    {
+      id: "q9",
+      text: "Which major city straddles the Bosphorus Strait linking Europe and Asia?",
+      options: ["Athens", "Sofia", "Istanbul", "Bucharest"],
+      correctAnswer: 2,
+      explanation: "Istanbul spans both Europe and Asia across the Bosphorus Strait.",
+    },
+    {
+      id: "q10",
+      text: "Which U.S. state has the greatest number of volcanoes?",
+      options: ["Alaska", "Hawaii", "California", "Washington"],
+      correctAnswer: 0,
+      explanation: "Alaska has the most volcanoes in the United States, many in the Aleutian arc.",
+    },
+    {
+      id: "q11",
+      text: "What is the largest freshwater lake in Africa by surface area?",
+      options: ["Lake Victoria", "Lake Tanganyika", "Lake Malawi", "Lake Turkana"],
+      correctAnswer: 0,
+      explanation: "Lake Victoria is Africa's largest freshwater lake by surface area.",
+    },
+    {
+      id: "q12",
+      text: "Which of the following countries lie on both the European and Asian continents?",
+      options: ["Russia", "Turkey", "Kazakhstan", "All of the above"],
+      correctAnswer: 3,
+      explanation: "Russia, Turkey, and Kazakhstan all have territory in both Europe and Asia.",
+    },
+  ],
+}
+
+export default quiz

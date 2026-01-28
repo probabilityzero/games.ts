@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { HiCheckCircle, HiXCircle, HiRefresh, HiArrowLeft, HiChartBar, HiClipboardList, HiUser, HiStar } from "react-icons/hi"
-import type { Quiz } from "@/lib/quiz-data"
+import type { Quiz } from "@/data/quiz"
 import type { QuizProgress } from "@/lib/quiz-storage"
 import { clearProgress } from "@/lib/quiz-storage"
 

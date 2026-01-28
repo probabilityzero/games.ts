@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams, useRouter } from "next/navigation"
-import { getQuizBySlug } from "@/lib/quiz-data"
+import { getQuizBySlug } from "@/data/quiz"
 import { getProgress, saveProgress } from "@/lib/quiz-storage"
 import { getUserProfile } from "@/lib/profile-storage"
-import QuizFlow from "@/components/quiz-flow"
+import QuizQuestions from "@/components/quiz-questions"
 import QuizResults from "@/components/quiz-results"
 import QuizInfo from "@/components/quiz-info"
 import ProfileSetupModal from "@/components/profile-setup-modal"
-import type { Quiz } from "@/lib/quiz-data"
+import type { Quiz } from "@/data/quiz"
 import type { QuizProgress } from "@/lib/quiz-storage"
 import type { UserProfile } from "@/lib/profile-storage"
 
@@ -57,19 +57,19 @@ export default function QuizPage() {
     if (!userProfile) {
       setShowProfileModal(true)
     } else {
-      router.push(`/quiz/${quiz.slug}?view=questions`)
+      router.push(`/${quiz.slug}?view=questions`)
     }
   }
 
   const handleProfileComplete = (profile: UserProfile) => {
     setUserProfile(profile)
     setShowProfileModal(false)
-    router.push(`/quiz/${quiz.slug}?quiz=questions`)
+    router.push(`/${quiz.slug}?quiz=questions`)
   }
 
   if (view === "questions") {
     return (
-      <QuizFlow
+      <QuizQuestions
         quiz={quiz}
         userProfile={userProfile}
         onComplete={(answers) => {
@@ -109,7 +109,7 @@ export default function QuizPage() {
 
           saveProgress(quiz.id, newProgress.attempts[newProgress.attempts.length - 1], userProfileData)
           setProgress(newProgress)
-          router.push(`/quiz/${quiz.slug}?view=results`)
+          router.push(`/${quiz.slug}?view=results`)
         }}
       />
     )
@@ -123,7 +123,7 @@ export default function QuizPage() {
           progress={progress}
           onRetake={() => {
             setProgress(null)
-            router.push(`/quiz/${quiz.slug}?view=info`)
+            router.push(`/${quiz.slug}?view=info`)
           }}
         />
         <ProfileSetupModal
@@ -141,7 +141,7 @@ export default function QuizPage() {
         quiz={quiz}
         progress={progress}
         onStartQuiz={handleStartQuiz}
-        onViewResults={() => router.push(`/quiz/${quiz.slug}?view=results`)}
+        onViewResults={() => router.push(`/${quiz.slug}?view=results`)}
       />
       <ProfileSetupModal
         isOpen={showProfileModal}

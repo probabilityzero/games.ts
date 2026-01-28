@@ -4,16 +4,16 @@ import { useState } from "react"
 import Link from "next/link"
 import { MdPushPin } from "react-icons/md"
 import confetti from "canvas-confetti"
-import type { Quiz } from "@/lib/quiz-data"
+import type { Quiz } from "@/data/quiz"
 import type { UserProfile } from "@/lib/profile-storage"
 
-interface QuizFlowProps {
+interface Props {
   quiz: Quiz
   userProfile?: UserProfile | null
   onComplete: (answers: number[]) => void
 }
 
-export default function QuizFlow({ quiz, userProfile, onComplete }: QuizFlowProps) {
+export default function QuizQuestions({ quiz, userProfile, onComplete }: Props) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [answers, setAnswers] = useState<number[]>(Array(quiz.questions.length).fill(-1))
   const [showExplanation, setShowExplanation] = useState(false)
@@ -404,7 +404,7 @@ export default function QuizFlow({ quiz, userProfile, onComplete }: QuizFlowProp
           {/* Back Link */}
           <div className="pt-2 md:pt-0">
             <Link
-              href={`/quiz/${quiz.slug}`}
+              href={`/${quiz.slug}`}
               className="inline-flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-muted-foreground hover:text-foreground transition-smooth"
             >
               <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
