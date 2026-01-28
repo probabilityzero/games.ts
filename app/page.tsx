@@ -8,6 +8,7 @@ import { getUserProfile } from "@/lib/profile-storage"
 import { HiQuestionMarkCircle, HiLightningBolt, HiCheckCircle, HiArrowRight } from "react-icons/hi"
 import type { QuizProgress } from "@/lib/quiz-storage"
 import type { UserProfile } from "@/lib/profile-storage"
+import AppFooter from "@/components/layout/app-header"
 
 export default function Home() {
   const [progress, setProgress] = useState<Record<string, QuizProgress>>({})
@@ -34,6 +35,7 @@ export default function Home() {
   const totalQuestions = quizzes.reduce((sum, q) => sum + q.questions.length, 0)
 
   return (
+    <>
     <main className="min-h-screen bg-background transition-smooth">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-6 md:py-10 lg:py-12">
         {/* Hero Section */}
@@ -238,5 +240,6 @@ export default function Home() {
         </div>
       </div>
     </main>
+    <AppFooter /></>
   )
 }

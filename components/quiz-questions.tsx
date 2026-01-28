@@ -6,6 +6,7 @@ import { MdPushPin } from "react-icons/md"
 import confetti from "canvas-confetti"
 import type { Quiz } from "@/data/quiz"
 import type { UserProfile } from "@/lib/profile-storage"
+import { DoorClosed, LogOut } from "lucide-react"
 
 interface Props {
   quiz: Quiz
@@ -143,7 +144,7 @@ export default function QuizQuestions({ quiz, userProfile, onComplete }: Props) 
   )
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Banner */}
       <div className={`relative bg-linear-to-br ${quiz.accentColor} overflow-hidden`}>
         {/* Background Pattern */}
@@ -384,9 +385,6 @@ export default function QuizQuestions({ quiz, userProfile, onComplete }: Props) 
                 className={`px-5 md:px-8 py-2 md:py-3 bg-linear-to-r ${quiz.accentColor} text-white rounded-lg md:rounded-xl font-bold transition-all duration-300 hover:shadow-2xl hover:scale-105 active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center gap-1.5 md:gap-2 text-sm md:text-base`}
               >
                 Submit
-                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
               </button>
             ) : (
               <button
@@ -401,18 +399,6 @@ export default function QuizQuestions({ quiz, userProfile, onComplete }: Props) 
             )}
           </div>
 
-          {/* Back Link */}
-          <div className="pt-2 md:pt-0">
-            <Link
-              href={`/${quiz.slug}`}
-              className="inline-flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-muted-foreground hover:text-foreground transition-smooth"
-            >
-              <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Leave for Now
-            </Link>
-          </div>
         </div>
       </div>
 
@@ -522,6 +508,15 @@ export default function QuizQuestions({ quiz, userProfile, onComplete }: Props) 
                 </p>
               </div>
             </div>
+          </div>
+          <div className="py-3">
+            <Link
+              href={`/${quiz.slug}`}
+                className="px-5 items-center gap-1.5 md:gap-2 text-xs md:text-sm text-muted-foreground hover:text-foreground transition-smooth md:px-8 py-2 md:py-3 bg-linear-to-r rounded-lg md:rounded-xl font-bold transition-all duration-300 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex"
+            >
+              <LogOut className="rotate-180 w-4 h-4 md:w-5 md:h-5" />
+              Leave for Now
+            </Link>
           </div>
         </div>
       </div>

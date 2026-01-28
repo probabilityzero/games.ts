@@ -2,8 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import { ThemeProvider } from "@/components/layout/theme-provider"
-import AppFooter from "@/components/layout/app-header"
+import { ThemeProvider } from "@/components/layout/theme-provider" 
 import ProfileModalRoot from "@/components/profile/profile-modal-root"
 import "./globals.css"
 
@@ -35,8 +34,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <ProfileModalRoot />
           {children}
-        </ThemeProvider>
-        <AppFooter />
+        </ThemeProvider>]
         <Analytics />
       </body>
     </html>
