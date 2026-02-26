@@ -286,7 +286,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname() ?? "/"
 
   return (
-    <div className="min-h-screen bg-[#0e0e12]">
+    <div className="min-h-screen relative bg-background text-foreground">
       {/* ── Desktop layout (md+) ── */}
       <div className="hidden md:block">
         {/* <Sidebar pathname={pathname} /> */}

@@ -34,12 +34,12 @@ function StarRating({ rating, total }: { rating: number; total: number }) {
           </svg>
         )}
         {Array.from({ length: empty }).map((_, i) => (
-          <svg key={i} className="w-3.5 h-3.5 text-white/20 fill-white/20" viewBox="0 0 20 20">
+          <svg key={i} className="w-3.5 h-3.5  fill-white/20" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
         ))}
       </span>
-      <span className="text-[11px] text-white/50">{total > 0 ? total.toLocaleString() : "No ratings yet"}</span>
+      <span className="text-[11px] ">{total > 0 ? total.toLocaleString() : "No ratings yet"}</span>
     </span>
   );
 }
@@ -86,7 +86,7 @@ function DifficultyDot({ difficulty }: { difficulty: Game["difficulty"] }) {
     variable: "Variable",
   };
   return (
-    <span className="flex items-center gap-1.5 text-[11px] text-white/50">
+    <span className="flex items-center gap-1.5 text-[11px] ">
       <span className={`w-1.5 h-1.5 rounded-full ${colors[difficulty]}`} />
       {labels[difficulty]}
     </span>
@@ -98,7 +98,7 @@ function DifficultyDot({ difficulty }: { difficulty: Game["difficulty"] }) {
 function FeaturedCard({ game }: { game: Game }) {
   const isPlayable = game.status !== "coming-soon";
   return (
-    <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
+    <div className="relative rounded-2xl overflow-hidden border shadow-2xl group">
       <div className={`absolute inset-0 bg-linear-to-br ${game.bannerGradient} opacity-90`} />
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
       <div
@@ -109,7 +109,7 @@ function FeaturedCard({ game }: { game: Game }) {
       <div className="relative z-10 p-8 md:p-12 min-h-80 flex flex-col justify-between">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest bg-white/15 text-white uppercase backdrop-blur-sm border border-white/20">
+            <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest bg-white/15 uppercase backdrop-blur-sm border">
               ★ Featured
             </span>
             <StatusBadge game={game} />
@@ -118,14 +118,14 @@ function FeaturedCard({ game }: { game: Game }) {
         </div>
 
         <div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight drop-shadow-lg">
+          <h2 className="text-4xl md:text-5xl font-black mb-2 tracking-tight drop-shadow-lg">
             {game.title}
           </h2>
           <p className="text-white/75 text-base md:text-lg mb-5 max-w-xl leading-relaxed">
             {game.shortDescription}
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-white/60">
+          <div className="flex flex-wrap items-center gap-4 mb-6 text-sm ">
             <span className="flex items-center gap-1.5">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -151,7 +151,7 @@ function FeaturedCard({ game }: { game: Game }) {
             {game.tags.slice(0, 5).map((tag) => (
               <span
                 key={tag.label}
-                className="px-3 py-1 rounded-full text-xs font-medium bg-white/15 text-white backdrop-blur-sm border border-white/15"
+                className="px-3 py-1 rounded-full text-xs font-medium bg-white/15 backdrop-blur-sm border"
               >
                 {tag.label}
               </span>
@@ -169,7 +169,7 @@ function FeaturedCard({ game }: { game: Game }) {
               </svg>
             </Link>
           ) : (
-            <span className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 text-white/50 font-bold text-sm border border-white/10 cursor-not-allowed">
+            <span className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10  font-bold text-sm border cursor-not-allowed">
               Coming Soon
             </span>
           )}
@@ -188,7 +188,7 @@ function GameCard({ game }: { game: Game }) {
     <div
       className={`group flex flex-col rounded-2xl overflow-hidden border border-white/8 bg-white/3 backdrop-blur-sm shadow-xl transition-all duration-300 h-full ${
         isPlayable
-          ? "hover:border-white/20 hover:shadow-2xl hover:-translate-y-1 hover:bg-white/6 cursor-pointer"
+          ? "hover hover:shadow-2xl hover:-translate-y-1 hover:bg-white/6 cursor-pointer"
           : "opacity-70 cursor-default"
       }`}
     >
@@ -205,7 +205,7 @@ function GameCard({ game }: { game: Game }) {
         <div className="absolute bottom-3 left-4 text-4xl drop-shadow-xl select-none">{game.icon}</div>
         <div className="absolute top-3 right-3 flex gap-1.5">
           {game.isFree && (
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-black/40 text-white/80 backdrop-blur-sm border border-white/10">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-black/40  backdrop-blur-sm border">
               Free
             </span>
           )}
@@ -216,7 +216,7 @@ function GameCard({ game }: { game: Game }) {
       {/* Body */}
       <div className="flex flex-col flex-1 p-4 gap-3">
         <div>
-          <h3 className="text-white font-bold text-lg leading-tight mb-1">{game.title}</h3>
+          <h3 className="font-bold text-lg leading-tight mb-1">{game.title}</h3>
           <p className="text-white/50 text-sm leading-relaxed line-clamp-2">{game.shortDescription}</p>
         </div>
 
@@ -233,7 +233,7 @@ function GameCard({ game }: { game: Game }) {
 
         <div className="border-t border-white/[0.07]" />
 
-        <div className="flex items-center justify-between text-[11px] text-white/40">
+        <div className="flex items-center justify-between text-[11px] ">
           <span className="flex items-center gap-1">
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -253,10 +253,10 @@ function GameCard({ game }: { game: Game }) {
           {game.rating > 0 ? (
             <StarRating rating={game.rating} total={game.totalRatings} />
           ) : (
-            <span className="text-[11px] text-white/30 italic">No ratings yet</span>
+            <span className="text-[11px]  italic">No ratings yet</span>
           )}
           {game.playCount > 0 && (
-            <span className="text-[11px] text-white/35">{game.playCount.toLocaleString()} plays</span>
+            <span className="text-[11px] ">{game.playCount.toLocaleString()} plays</span>
           )}
         </div>
 
@@ -265,12 +265,12 @@ function GameCard({ game }: { game: Game }) {
             <div className="flex items-center justify-between">
               <div className="flex gap-1.5 flex-wrap">
                 {game.genre.slice(0, 2).map((g) => (
-                  <span key={g} className="px-2 py-0.5 rounded text-[10px] font-medium bg-white/5 text-white/30 capitalize">
+                  <span key={g} className="px-2 py-0.5 rounded text-[10px] font-medium bg-white/5  capitalize">
                     {g}
                   </span>
                 ))}
               </div>
-              <span className="flex items-center gap-1 text-xs font-semibold text-white/60 group-hover:text-white transition-colors duration-200">
+              <span className="flex items-center gap-1 text-xs font-semibold  group-hover:transition-colors duration-200">
                 Play
                 <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -278,7 +278,7 @@ function GameCard({ game }: { game: Game }) {
               </span>
             </div>
           ) : (
-            <span className="text-xs text-white/25 italic">Available soon</span>
+            <span className="text-xs  italic">Available soon</span>
           )}
         </div>
       </div>
@@ -300,13 +300,13 @@ function SectionHeading({ title, subtitle, count }: { title: string; subtitle?: 
   return (
     <div className="flex items-end justify-between mb-5">
       <div>
-        <h2 className="text-xl font-bold text-white tracking-tight">
+        <h2 className="text-xl font-bold tracking-tight">
           {title}
           {count !== undefined && (
-            <span className="ml-2 text-sm font-medium text-white/30">({count})</span>
+            <span className="ml-2 text-sm font-medium ">({count})</span>
           )}
         </h2>
-        {subtitle && <p className="text-sm text-white/40 mt-0.5">{subtitle}</p>}
+        {subtitle && <p className="text-sm  mt-0.5">{subtitle}</p>}
       </div>
     </div>
   );
@@ -318,7 +318,7 @@ function StatPill({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col items-center gap-0.5 px-5 py-3 rounded-xl bg-white/4 border border-white/7 shrink-0">
       <span className="text-lg font-extrabold text-white">{value}</span>
-      <span className="text-[11px] text-white/40 uppercase tracking-wider whitespace-nowrap">{label}</span>
+      <span className="text-[11px]  uppercase tracking-wider whitespace-nowrap">{label}</span>
     </div>
   );
 }
@@ -331,7 +331,7 @@ export default function HomePage() {
   const totalRatings = games.reduce((s, g) => s + g.totalRatings, 0);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative border-foreground/10">
       {/* Ambient background blobs — fixed so they cover the whole viewport */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-violet-600/10 blur-[120px]" />
@@ -343,13 +343,13 @@ export default function HomePage() {
 
         {/* Toolbar: search + count */}
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/8 text-white/35 text-sm flex-1 max-w-xs">
+          <div className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/8  text-sm flex-1 max-w-xs">
             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             Search games…
           </div>
-          <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/8 text-white/50 text-xs font-medium whitespace-nowrap">
+          <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/8  text-xs font-medium whitespace-nowrap">
             {games.length} games
           </span>
         </div>
@@ -392,7 +392,7 @@ export default function HomePage() {
         )}
 
         {/* Footer */}
-        <footer className="border-t border-white/[0.07] pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/25">
+        <footer className="border-t border-white/[0.07] pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs ">
           <span>© {new Date().getFullYear()} Games by Han. All games are free to play.</span>
           <span>Made with ❤️ and Next.js</span>
         </footer>
