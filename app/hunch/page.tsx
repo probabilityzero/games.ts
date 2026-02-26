@@ -21,7 +21,7 @@ const AnimatedHint = ({ hint }: { hint: string }) => {
 	}, [hint]);
 	if (!visible || !hint) return null;
 	return (
-		<div className="absolute left-1/2 transform -translate-x-1/2 -top-8 bg-mint-100 text-gray-700 px-2 py-1 rounded text-sm animate-bounce">
+		<div className="absolute left-1/2 transform -translate-x-1/2 -top-8 bg-mint-100 px-2 py-1 rounded text-sm animate-bounce">
 			{hint}
 		</div>
 	);
@@ -30,7 +30,7 @@ const AnimatedHint = ({ hint }: { hint: string }) => {
 const GuessedCard = ({ animal, matchingTraits }: AnyObj) => {
 	const displayed = animal.traits?.slice(0, 5) || [];
 	return (
-		<div className="bg-white rounded-lg shadow-md p-4 flex items-center justify-between">
+		<div className="rounded-lg shadow-md p-4 flex items-center justify-between">
 			<div className="flex items-center gap-4">
 				<img src={animal.imageUrl} alt={animal.name} className="w-16 h-16 object-cover rounded-full" />
 				<div className="flex flex-col">
@@ -113,7 +113,7 @@ export default function Page() {
 	};
 
 	return (
-		<div className="min-h-screen bg-foreground text-foreground">
+		<div className="min-h-screen bg-background text-foreground p-6">
 			<div className="max-w-4xl mx-auto px-4 py-8">
 				<div className="flex gap-4 justify-between items-center">
 					<div className="flex gap-2">
@@ -139,7 +139,7 @@ export default function Page() {
 					))}
 				</div>
 
-				<div className="fixed bottom-0 left-0 right-0 bg-foreground border-t shadow-lg p-3">
+				<div className="fixed bottom-0 left-0 right-0 border-t shadow-lg p-3">
 					<div className="max-w-4xl mx-auto">
 						<div className="relative">
 							{suggestions.length > 0 && (
