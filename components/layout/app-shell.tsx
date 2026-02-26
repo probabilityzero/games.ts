@@ -218,7 +218,7 @@ function Sidebar({ pathname }: { pathname: string }) {
 function Titlebar({ pathname }: { pathname: string }) {
   const { title, parent } = getPageMeta(pathname)
   return (
-    <header className="fixed top-0 left-[220px] right-0 h-11 z-20 flex items-center px-5 gap-3 bg-[#0e0e12]/80 backdrop-blur-xl border-b border-white/6">
+    <header className="fixed top-0 w-full h-11 z-20 flex items-center px-5 gap-3 bg-[#0e0e12]/80 backdrop-blur-xl border-b border-white/6">
       {parent ? (
         <BackButton to={parent} />
       ) : (
@@ -289,10 +289,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-[#0e0e12]">
       {/* ── Desktop layout (md+) ── */}
       <div className="hidden md:block">
-        <Sidebar pathname={pathname} />
+        {/* <Sidebar pathname={pathname} /> */}
         <Titlebar pathname={pathname} />
         {/* Content: sidebar offset + titlebar offset */}
-        <main className="ml-[220px] pt-11 min-h-screen">
+        <main className="pt-11 min-h-screen">
           {children}
         </main>
       </div>
