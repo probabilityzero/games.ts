@@ -6,11 +6,11 @@ export default function HomePage() {
       <div className="max-w-4xl mx-auto px-4 py-10">
         <header className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold">Games</h1>
-          <div className="rounded-full bg-muted px-3 py-1 text-sm">App Store</div>
+          <div className="rounded-full bg-muted px-3 py-1 text-sm">Collections</div>
         </header>
 
         <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <Link href="/hunch" className="group block bg-card rounded-2xl p-6 shadow-md transform transition-transform hover:-translate-y-1">
+          <Link href="/hunch" className="group block bg-card rounded-2xl p-6 shadow-md transform transition-transform">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-2xl">🧠</div>
               <div>
@@ -24,11 +24,11 @@ export default function HomePage() {
             </div>
           </Link>
 
-          <Link href="/tictactoe" className="group block bg-card rounded-2xl p-6 shadow-md transform transition-transform hover:-translate-y-1">
+          <Link href="/tictactoe" className="group block bg-card rounded-2xl p-6 shadow-md transform transition-transform">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-accent rounded-xl flex items-center justify-center text-2xl">❌</div>
               <div>
-                <h2 className="text-xl font-semibold">Tic-Tac-Toe</h2>
+                <h2 className="text-xl font-semibold">Quiz</h2>
                 <p className="text-sm text-muted-foreground">Multiplayer classic</p>
               </div>
             </div>
@@ -38,8 +38,6 @@ export default function HomePage() {
             </div>
           </Link>
         </section>
-
-        <footer className="mt-10 text-center text-sm text-muted-foreground">Built with Tailwind · <a className="text-primary" href="#">More games</a></footer>
       </div>
     </main>
   );
