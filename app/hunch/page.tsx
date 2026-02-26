@@ -128,7 +128,6 @@ export default function Page() {
 						</button>
 					</div>
 					<div>
-						<div className="text-sm">Target</div>
 						<div className="font-bold">{isCorrect ? "Guessed!" : "Guess the item"}</div>
 					</div>
 				</div>
